@@ -1,14 +1,34 @@
-<unit stream = ./main>
-    <!--<unit use="url(air-example/inherited-interactivity)"></unit>-->
-    <!--<unit use="url(air-example/view-plugin)"></unit>-->
-    <!--<unit use="url(air-schema-tree)"></unit>-->
-    <!--<unit use="url(air-example/image)"></unit>-->
-    <!--<unit use="url(air-example/shared-unit)"></unit>-->
-    <!--<unit use="url(air-example/lazy-unit)"></unit>-->
-    <!--<unit use="url(air-example/adaptive)"></unit>-->
-    <!--<unit key = kit template use="url(air-example/master-kit)"></unit>-->
-    <!--<unit use="url(air-example/custom-pathname)"></unit>-->
-    <!--<unit key = master-kit template use="url(air-example/master-kit)"></unit>-->
-    <!--<unit use="url(air-example/master-kit-user)"></unit>-->
-    <unit use="url(air-example/keyframes)"></unit>
+<unit stream=./main>
+    <unit>
+        <stream-source>
+            import {stream} from "m2"
+
+            export default ({obtain}) =>
+                stream((emt, {sweep}) => {
+                    setInterval(() => {
+                        const length = Math.round(Math.random() * 3) + 1;
+                        emt([{
+                            length,
+                            arr1: [
+                                {id: 0, arr2: [...Array(length).keys()].map(item => ({id: item}))},
+                            ]
+                        }]);
+                    }, 500);
+
+                })
+        </stream-source>
+        <unit>{(length)}</unit>
+        |
+        <unit kit=(arr1){id}>
+            <unit kit=(arr2){id}>
+                .
+            </unit>
+        </unit>
+        |
+        <unit kit=(arr1){id,arr2}>
+            <unit kit=(arr2){id}>
+                .
+            </unit>
+        </unit>
+    </unit>
 </unit>
