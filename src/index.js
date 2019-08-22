@@ -26,7 +26,6 @@ export default {
         stream((emt, {hook}) => {
             emt([]);
             hook.add(() => {
-                console.log("here");
                 document.querySelector(".content").innerHTML += "model3 handler ";
                 emt([]);
             });
